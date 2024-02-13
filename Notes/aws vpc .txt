@@ -1,0 +1,8 @@
+aws vpc 
+
+subnets are where resources are placed & route tables are the ones how the resources talk to other things in vpc or things outside of vpc 
+
+inter zone & intra zone trafficking - suppose a vpc 5 subnets in three AZ's, if subnets in same AZ talk to each other, then thats called inter zone traffic where as if the subnets from different AZ's talk, then thats called intra zone traffic ... intra zone traffic is chargable                                                                          
+
+
+---------------

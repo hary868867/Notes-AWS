@@ -1,0 +1,3 @@
+new words saw on interview questions of aws devops 
+
+aws system manager, aws cloud formation, aws lambda, aws config, amazon inspector, patching tasks, read replicas of auto scaling groups, amazon route 53 fail over routing policy, 

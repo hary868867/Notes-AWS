@@ -1,0 +1,42 @@
+AWS DevOps - Mike Pfifer ( Plural Sight ) 
+
+
+open the browser.. download git for windows-> put use powershell as option.. rest all are defaults.. finish downloading it.
+we need .net sdk for AWS.. so go to browser & download aws tools for windows by clicking aws.amazon.com/powershell/.. all are defaults, finsih setup.
+
+now, go to aws console, create new user, save credentials.. give him awscodecommitfullaccess permission
+now, get to powershell.. type command - Set-AWSCredentials -AccessKey giveacceskey -SecretKey givesecretkey -StoreAs codecommit
+now go to- cd '.\Program Files\aws tools\code commit-> do ls.. you will find, git-credential file-> now run command- .\git file.exe -p profilename - here, profilename is codecommit which we gave in above command... thats it, our credentials are fully configured.
+
+so, after all this configuration, code commit works just as git & the commands we use are nothing but the git commands
+-------------------
+
+code deploy and code pipeline
+
+code deploy is just like the ansible, the deployment tool, we have appspec.yml file which we write the wholething and to the wholething we have individual scripts.
+
+--------------------
+Elastic Bean Stalk
+
+elastic bean stalk is a Paas ( Platform as a service ) 
+
+go to elastic bean stalk in AWS console, we can create new application or launch by slecting language, create new application, give the enviroment for the project and then the enviroment type and also the enviroment info
+
+
+
+
+
+
+--------------------
+
+
+
+Appspec File ( appspec.yml ) - 
+
+installing code deploy - 
+
+#!/bin/bash -xe
+yum install -y ruby
+
+cd /opt
+curl -0

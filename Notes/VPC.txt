@@ -1,0 +1,61 @@
+	VPC 
+	
+creating a vpc 
+
+open console -> search vpc -> vpc dashboard -> create vpc -> give name tag : my-vpc-1
+                                                             ipv4 range    : 10.0.0.0/16
+                                                             ipv6 range    : leave it to default no  
+                                                             tenancy       : default	                   ->   vpc is created
+														
+vpc dahsborad -> subnets -> create subnet -> choose 'my-vpc-1' as vpc -> give subnet name : subnet-a
+                                                                         AZ               : Us-west-2a     
+																		 Ipv4             : 10.0.1.0/24    -> subnet is created
+
+vpc dashboard -> internet gateway -> give name : ig-1 -> it will be created -> ig dashboard -> actions -> attach to vpc -> select 'my-vpc-1' 
+
+vpc dahsborad -> route tables -> create route table -> give name rt-1 -> choose 'my-vpc-1' -> route table is created -> route table dashboard -> routes -> edit routes -> destination : 0.0.0.0/0   -> subnet associations -> edit subnet associations -> select subnet-a -> click save 
+																																										  target      : ig-1        
+																																										  
+ec2 dashboard -> launch instance -> select any instance with t2.micro -> create new key pair -> network settings -> inbound security groups rules  :  add security group rule 2 : type - http, source - anywhere
+																													advanced network configuration : network interface 1-> enter public ip : 10.0.1.10                 ->  launch instance 
+
+
+       thats it ... we have launched aws resource ( ec2) in to the vpc  
+
+----------------------------------------------	   
+
+checking ........... open git in terminal -> go to key pair directory -> give 'ssh -i pemfilename ec2@publicIpofInstance' -> it will enter in to instance -> install httpd and start & open web browser and check with ip address
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Usage of Network ACL's  
+
+globomantics have already had two ec2 instances running in vpc with all the rules allowed. when we open the browser and browse with public IP, its page will get printed 
+
+
+so now we need to define traffic rules, we can do that by network acl's 
+
+vpc dashboard -> network acl -> create it with some name -> open it in network acl dashboard -> edit inbound rules -> add three rules -> one is with 80http allow 
+																																		 second with 8080http deny
+																																		 third with custom allow 1024-65535      -> edit subnet associations -> add subnet-1a   -> thats it rules according to us are configured
+																								 edit outbound rules -> add three rules -> http 80 deny 
+																								                                          custom allow 1024-65535
+																																		  https 443 allow 
+																																		  
+----------------------------------------------																																		  
+  
+  before network acl implementation, when we ping to public ip of ec-1, it will give back response. but after rules implementation, it will not give any response back, also if we browse with 8080, it will not load as we denied 8080 in inbound 
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Peering connection
+
+vpc dashboard -> peering connection -> give name pcx -> select local vpc to peer with : web-vpc -> select shared vpc in the accepter -> peering dashboard -> select pcx -> accept vpc peering connection request 
+ 
+

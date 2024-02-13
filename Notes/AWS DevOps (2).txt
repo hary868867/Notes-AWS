@@ -1,0 +1,15 @@
+AWS DevOps
+
+Autoscaling - autoscaling is used to monitor and compute the resources automatically so that the applications hosted in AWS maintain a good performance, it will scale in or scale out the resources based on the criteria for eg; CPU utilization
+while creating autoscaling group we have to create cloudwatch alarms 
+
+how to create Autoscaling group -
+first, we have to create launch template
+then, we have to create target groups & a load balancer ( application ) ... auto scaling group automatically adds instance to the target groups 
+now, go to auto scaling group, give all the parameters needed, select the launch template & target groups.. 
+
+auto scaling group will create the instances based on the launch templates, so whatever parameters we need to change, we need to change in launch templates
+the instances created auto scaling group are dynamic, means they can be deleted anytime based on performance, so we need to store our data somehwere outside, i.e, EFS or anything
+
+command to install aws cli - apt install aws cli -y ( ubuntu ) 
+
