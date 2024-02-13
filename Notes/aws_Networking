@@ -1,0 +1,12 @@
+At least one IPv4 CIDR block  - user will access our front end app via this IPv4 block we can give only one elastic ip so that public ip wont change each time 
+At least one IPv4 subnet - 
+IPv6 fully supported
+Additional components include
+     Route tables
+     Internet gateways
+     Network access control lists
+     Virtual private network components
+     NAT gateways
+     Elastic IP addresses
+	 
+vpc is bounded to a region and subnet is bounded to a availability zone
